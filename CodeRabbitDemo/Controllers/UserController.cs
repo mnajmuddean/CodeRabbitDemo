@@ -67,10 +67,6 @@ namespace CodeRabbitDemo.Controllers
             }
             catch (Exception ex)
             {
-                // FLAW 5: Information Leakage
-                // Returning ex.Message and ex.StackTrace directly to the API response.
-                // A malicious user can trigger an error intentionally to read your database 
-                // connection strings, table names, or internal server file paths.
                 return StatusCode(500, new { Error = ex.Message, Trace = ex.StackTrace });
             }
         }
